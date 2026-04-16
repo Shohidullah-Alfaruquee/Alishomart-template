@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlishoMart | Modern Ecommerce Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+  --bg: #f5f0e9;
+  --surface: #ffffff;
+  --surface-soft: #fbf7f2;
+  --ink: #162033;
+  --ink-soft: #576074;
+  --line: #e7ddd0;
+  --gold: #c89a3d;
+  --gold-strong: #ae7f27;
+  --gold-soft: #e7c98c;
+  --shadow: 0 20px 50px rgba(17, 24, 39, 0.12);
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.75rem;
+  --container: min(100% - 1rem, 76rem);
+  --title-size: clamp(1.9rem, 5.5vw, 4.15rem);
+  --h2-size: clamp(1.2rem, 2vw, 1.5rem);
+  --text-size: clamp(0.92rem, 1.5vw, 1rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(255, 241, 210, 0.9), transparent 28%),
+    linear-gradient(180deg, #f7f2eb 0%, #eee6dc 100%);
+  color: var(--ink);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+}
+
+.brand-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 0 0.9rem;
+  background: rgba(20, 27, 44, 0.96);
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.brand-logo img {
+  display: block;
+  width: clamp(6.75rem, 18vw, 9rem);
+  height: auto;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: 1fr 2.4rem;
+  background: #fff;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 154, 61, 0.2);
+  min-width: 0;
+}
+
+.search-bar input {
+  min-width: 0;
+  border: 0;
+  padding: 0.52rem 0.8rem 0.52rem 0.9rem;
+  color: var(--ink);
+  background: transparent;
+  font-size: 0.78rem;
+}
+
+.search-bar button {
+  border: 0;
+  background: linear-gradient(180deg, #d3aa58 0%, #bb8930 100%);
+  color: #20190f;
+  cursor: pointer;
+  font-size: 0.92rem;
+}
+
+.header-actions {
+  display: inline-flex;
+  justify-content: flex-end;
+  gap: 0.85rem;
+}
+
+.header-actions a {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #efcf8f;
+}
+
+.header-actions svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.header-actions a:last-child svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.nav-wrap {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  order: 3;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+}
+
+.menu-toggle {
+  border: 0;
+  background: transparent;
+  color: #e4c17a;
+  font-size: 1rem;
+  padding: 0;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1 1 14rem;
+}
+
+.site-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.site-nav a {
+  color: #c9cfdb;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.nav-search {
+  width: 100%;
+  max-width: 15rem;
+}
+
+.brand-row > .nav-search {
+  display: grid;
+  flex: 0 1 10rem;
+  max-width: 10rem;
+  margin-left: auto;
+}
+
+@media (max-width: 479.98px) {
+  .brand-row > .nav-search {
+    display: none;
+  }
+
+  .hero-card {
+    min-height: 18rem;
+    gap: 0.45rem;
+    padding: 1.2rem 0.85rem 2.9rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.45rem;
+    font-size: clamp(0.58rem, 2.1vw, 0.7rem);
+    letter-spacing: 0.12em;
+  }
+
+  .hero-copy h1 {
+    max-width: 7ch;
+    font-size: clamp(1.15rem, 5vw, 1.55rem);
+    line-height: 1.02;
+  }
+
+  .hero-copy p:not(.eyebrow) {
+    max-width: 16ch;
+    margin: 0.55rem 0 1rem;
+    font-size: clamp(0.66rem, 2.45vw, 0.82rem);
+    line-height: 1.35;
+  }
+
+  .cta-button {
+    min-width: 6.5rem;
+    padding: 0.7rem 0.95rem;
+    font-size: 0.78rem;
+  }
+
+  .hero-visual {
+    min-height: 11.5rem;
+  }
+
+  .hero-feature {
+    width: min(100%, 12rem);
+    max-height: 12.25rem;
+    right: -0.1rem;
+  }
+}
+
+@media (min-width: 421px) and (max-width: 480px) {
+  .trending-section .product-grid,
+  .all-products-section .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trending-section .product-card,
+  .all-products-section .product-card {
+    padding: 0.68rem;
+  }
+
+  .trending-section .product-media,
+  .all-products-section .product-media {
+    height: 8.8rem;
+  }
+
+  .trending-section .product-card h3,
+  .all-products-section .product-card h3 {
+    font-size: clamp(0.7rem, 1.7vw, 0.82rem);
+    line-height: 1.2;
+  }
+
+  .trending-section .price,
+  .all-products-section .price {
+    gap: 0.3rem;
+    font-size: 0.74rem;
+  }
+
+  .trending-section .price strong,
+  .all-products-section .price strong {
+    font-size: 0.8rem;
+  }
+
+  .trending-section .price span,
+  .all-products-section .price span {
+    font-size: 0.7rem;
+  }
+
+  .trending-section .product-actions a,
+  .all-products-section .product-actions a {
+    min-height: 1.8rem;
+    padding: 0.4rem 0.35rem;
+    font-size: 0.62rem;
+  }
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  color: #e9c87f;
+}
+
+.hero {
+  padding: 0.7rem 0 0;
+}
+
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  background:
+    linear-gradient(115deg, rgba(248, 232, 208, 0.94) 0%, rgba(241, 228, 215, 0.94) 36%, rgba(58, 49, 49, 0.76) 100%),
+    radial-gradient(circle at 24% 50%, rgba(255, 255, 255, 0.65), transparent 32%);
+  min-height: 20rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem 3.25rem;
+  box-shadow: var(--shadow);
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 48%, rgba(255, 255, 255, 0.7), transparent 16%),
+    radial-gradient(circle at 76% 8%, rgba(255, 255, 255, 0.4), transparent 20%),
+    linear-gradient(135deg, transparent 46%, rgba(255, 255, 255, 0.17) 52%, transparent 58%);
+  pointer-events: none;
+}
+
+.hero-copy,
+.hero-visual {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: clamp(0.74rem, 1.7vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8b6a2c;
+}
+
+.hero-copy h1 {
+  max-width: 8ch;
+  margin: 0;
+  font-size: var(--title-size);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.hero-copy p:not(.eyebrow) {
+  max-width: 18ch;
+  margin: 0.75rem 0 1.25rem;
+  color: #776b61;
+  font-size: clamp(0.78rem, 1.9vw, 1.12rem);
+  line-height: 1.45;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8.25rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 0.55rem;
+  font-weight: 700;
+  color: #fff8ec;
+  background: linear-gradient(180deg, #d2ab57, #bb8830);
+  box-shadow: 0 16px 24px rgba(176, 123, 37, 0.22);
+}
+
+.hero-visual {
+  margin-top: 0;
+  min-height: 14rem;
+}
+
+.hero-model {
+  position: absolute;
+  right: 0;
+  bottom: 0.35rem;
+  width: min(100%, 15rem);
+  max-height: 15rem;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 1rem 1.4rem rgba(18, 17, 19, 0.28));
+}
+
+.hero-feature {
+  left: auto;
+  right: -0.25rem;
+  transform: none;
+  width: min(100%, 15rem);
+  max-width: 100%;
+}
+
+.product-media {
+  position: relative;
+  height: 11.5rem;
+  border-radius: 0.8rem;
+  background:
+    radial-gradient(circle at top, #fffef8 0%, #f7f2ea 62%, #f0e5d5 100%);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+}
+
+.product-media img {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  margin: auto;
+}
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #d8ae59;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hero-arrow.prev {
+  left: 0.3rem;
+}
+
+.hero-arrow.next {
+  right: 0.3rem;
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.35rem;
+  z-index: 1;
+}
+
+.hero-dots span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: rgba(213, 171, 88, 0.45);
+}
+
+.hero-dots span.active {
+  width: 0.65rem;
+  background: #d5ab58;
+}
+
+.catalog-section {
+  padding: 1rem 0 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: var(--h2-size);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.section-header h2::before {
+  content: "*";
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.section-header a {
+  color: #515a6e;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+.product-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #eadfce;
+  border-radius: 0.7rem;
+  padding: 0.8rem;
+  box-shadow: 0 12px 22px rgba(38, 30, 21, 0.05);
+  overflow: hidden;
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.38s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-0.3rem);
+  border-color: rgba(200, 154, 61, 0.45);
+  box-shadow: 0 18px 30px rgba(38, 30, 21, 0.12);
+}
+
+.badge {
+  position: absolute;
+  left: 0.7rem;
+  top: 0.7rem;
+  z-index: 1;
+  background: linear-gradient(180deg, #e1bf74, #c99a43);
+  color: #fffaf0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.28rem 0.45rem;
+  border-radius: 0.3rem;
+}
+
+.fav {
+  position: absolute;
+  right: 0.7rem;
+  top: 0.65rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(200, 154, 61, 0.28);
+  border-radius: 50%;
+  background: #ffe8ef;
+  color: #b87917;
+  font-size: 1rem;
+  z-index: 1;
+  box-shadow: 0 0.35rem 0.8rem rgba(24, 20, 15, 0.08);
+  transition: color 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.product-card:hover .fav {
+  background: #ffdbe7;
+  border-color: rgba(200, 146, 47, 0.46);
+  color: #d08a18;
+  transform: scale(1.08);
+  box-shadow: 0 0.5rem 1rem rgba(187, 137, 48, 0.18);
+}
+
+.product-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.product-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem;
+  margin: 0 0 0.75rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transform: translateY(-0.45rem);
+  transition:
+    max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.35s ease,
+    visibility 0s linear 0.42s;
+}
+
+.product-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform 0.28s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-actions a:first-child {
+  background: rgba(200, 154, 61, 0.12);
+  border: 1px solid rgba(200, 154, 61, 0.34);
+  color: #9f6e1e;
+}
+
+.product-actions a:last-child {
+  background: linear-gradient(180deg, #d3aa58 0%, #bb8930 100%);
+  color: #20190f;
+}
+
+.product-actions a:hover {
+  transform: translateY(-0.08rem);
+  box-shadow: 0 0.55rem 1rem rgba(187, 137, 48, 0.16);
+}
+
+.product-card:hover .product-actions,
+.product-card:focus-within .product-actions {
+  max-height: 5rem;
+  opacity: 1;
+  visibility: visible;
+  margin: 0 0 0.75rem;
+  transform: translateY(0);
+  transition-delay: 0s, 0.06s, 0.06s, 0s, 0s;
+}
+
+.price {
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.96rem;
+}
+
+.price strong {
+  font-size: 1rem;
+  color: #bb852a;
+}
+
+.price span {
+  color: #8f949f;
+  text-decoration: line-through;
+  font-size: 0.85rem;
+}
+
+.compact .product-media {
+  height: 8.4rem;
+}
+
+.compact .product-media img {
+  width: 82%;
+  height: 82%;
+}
+
+.compact-card h3 {
+  font-size: 0.82rem;
+}
+
+.compact-card .price {
+  font-size: 0.82rem;
+}
+
+.compact-card .product-actions {
+  grid-template-columns: 1fr 1fr;
+}
+
+.compact-card .product-actions a {
+  min-height: 1.8rem;
+  padding: 0.42rem 0.4rem;
+  font-size: 0.64rem;
+  letter-spacing: 0.01em;
+}
+
+.product-media img {
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), filter 0.42s ease;
+}
+
+.product-card:hover .product-media img,
+.product-card:focus-within .product-media img {
+  transform: scale(0.97);
+  filter: saturate(1.02);
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 2rem 0 1rem;
+  color: #cbd1dc;
+  background:
+    linear-gradient(180deg, #1d2435 0%, #101624 100%);
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.footer-brand {
+  margin-bottom: 0.7rem;
+}
+
+.footer-copy,
+.newsletter-copy {
+  color: #98a0b1;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.site-footer h3 {
+  margin: 0 0 0.8rem;
+  color: #f0f4fb;
+  font-size: 1.05rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.site-footer li a {
+  color: #a8afbd;
+}
+
+.socials {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: #e0ba6a;
+  border: 1px solid rgba(224, 186, 106, 0.35);
+}
+
+.newsletter {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.newsletter input {
+  border: 1px solid #374058;
+  border-radius: 0.45rem;
+  background: #171d2a;
+  color: #fff;
+  padding: 0.85rem 0.95rem;
+}
+
+.newsletter button {
+  border: 0;
+  border-radius: 0.45rem;
+  padding: 0.9rem 1rem;
+  font-weight: 700;
+  color: #20190f;
+  background: linear-gradient(180deg, #d3aa58 0%, #bb8930 100%);
+}
+
+.footer-bottom {
+  display: grid;
+  gap: 0.9rem;
+  align-items: center;
+  padding-top: 1.2rem;
+  margin-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: #8d95a7;
+}
+
+.payments {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.payments span {
+  min-width: 2.6rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  text-align: center;
+  background: #fbfbfb;
+  color: #1a2234;
+  font-weight: 700;
+}
+
+@media (min-width: 481px) {
+  .brand-row {
+    flex-wrap: nowrap;
+  }
+
+  .brand-row > .nav-search {
+    flex: 0 1 11rem;
+    max-width: 11rem;
+  }
+
+  .hero-card {
+    min-height: 23rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding-inline: 1.5rem;
+  }
+
+  .hero-copy p:not(.eyebrow) {
+    max-width: 24ch;
+  }
+
+  .hero-feature {
+    width: min(100%, 18rem);
+    max-height: 18rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .brand-row {
+    flex-wrap: nowrap;
+  }
+
+  .brand-row > .nav-search {
+    flex-basis: 12.5rem;
+    max-width: 12.5rem;
+  }
+
+  .header-actions {
+    flex: 0 0 auto;
+  }
+
+  .hero-card {
+    min-height: 30rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding: 3rem 2.2rem 3.1rem;
+    border-radius: 0 0 1.2rem 1.2rem;
+  }
+
+  .hero-copy h1 {
+    max-width: 9ch;
+  }
+
+  .hero-visual {
+    min-height: 24rem;
+    margin-top: 0;
+  }
+
+  .hero-feature {
+    right: -0.35rem;
+    bottom: -0.35rem;
+    width: min(100%, 28rem);
+    max-height: 25rem;
+  }
+
+  .hero-arrow.prev {
+    left: 1rem;
+  }
+
+  .hero-arrow.next {
+    right: 1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .compact {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.2fr 0.8fr 0.9fr 1fr;
+  }
+
+  .footer-bottom {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .brand-row {
+    padding: 1rem 0;
+  }
+
+  .brand-row > .nav-search {
+    display: none;
+  }
+
+  .nav-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    order: 0;
+    border-top: 0;
+    padding-top: 0;
+    min-width: 0;
+  }
+
+  .site-nav {
+    gap: 1.5rem;
+  }
+
+  .site-nav a {
+    font-size: 0.9rem;
+  }
+
+  .nav-search {
+    width: min(100%, 14rem);
+  }
+
+  .hero-card {
+    padding: 3.35rem 3rem 3.4rem;
+    min-height: 34rem;
+  }
+
+  .hero-copy p:not(.eyebrow) {
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+  }
+
+  .hero-feature {
+    right: -1.2rem;
+    width: min(100%, 31rem);
+    max-height: 29rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .compact {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .compact .product-media {
+    height: 6.9rem;
+  }
+
+  .compact-card {
+    padding: 0.65rem;
+  }
+
+  .compact-card h3 {
+    font-size: 0.72rem;
+  }
+
+  .compact-card .price strong {
+    font-size: 0.84rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="brand-row container">
+        <a class="brand brand-logo" href="/" aria-label="AlishoMart home">
+          <img src="AlishomartLogo.png" alt="AlishoMart">
+        </a>
+        <form class="search-bar nav-search" action="#" method="get">
+          <label class="sr-only" for="search-mobile">Search products</label>
+          <input id="search-mobile" type="search" placeholder="Search..." aria-label="Search products">
+          <button type="submit" aria-label="Search">
+            <span>&#8981;</span>
+          </button>
+        </form>
+        <div class="nav-wrap">
+          
+          <nav class="site-nav" aria-label="Primary">
+            <a class="active" href="/">Home</a>
+      
+            <a href="#">All Products</a>
+
+            <a href="#">Contact</a>
+          </nav>
+          <form class="search-bar nav-search" action="#" method="get">
+            <label class="sr-only" for="search-desktop">Search products</label>
+            <input id="search-desktop" type="search" placeholder="Search..." aria-label="Search products">
+            <button type="submit" aria-label="Search">
+              <span>&#8981;</span>
+            </button>
+          </form>
+        </div>
+        <div class="header-actions" aria-label="Quick actions">
+          <a href="#" aria-label="Wishlist">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20.5 4.6 13.4A4.8 4.8 0 0 1 11.5 7l.5.6.5-.6a4.8 4.8 0 0 1 6.9 6.4L12 20.5Z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Account">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.2 0-7 2.1-7 5v1h14v-1c0-2.9-2.8-5-7-5Z"></path>
+            </svg>
+          </a>
+          <a href="#" aria-label="Cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 6h13l-1.3 6.2a2 2 0 0 1-2 1.6H9.2L8.4 16h9.8v2H8.1a1.8 1.8 0 0 1-1.8-2.2L7.6 12 6 4H3V2h4l.7 4ZM10 22a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm7 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-card">
+          <div class="hero-copy">
+            <p class="eyebrow">Modern Fashion Collection</p>
+            <h1>Premium Styles For Every Occasion</h1>
+            <p>Blazers, tees, baby dresses, and party looks curated for modern wardrobes.</p>
+            <a class="cta-button" href="#">Shop Now</a>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <img class="hero-model hero-feature" src="Kids/Blazer/Navy_Blue-removebg-preview.png" alt="Kids party dress">
+          </div>
+
+          <button class="hero-arrow prev" type="button" aria-label="Previous slide">&#8249;</button>
+          <button class="hero-arrow next" type="button" aria-label="Next slide">&#8250;</button>
+
+          <div class="hero-dots" aria-label="Slider pagination">
+            <span></span>
+            <span></span>
+            <span class="active"></span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog-section trending-section container">
+        <div class="section-header">
+          <h2>Trending Products</h2>
+          <a href="#">View All</a>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="badge">-20%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/Navy_Blue-removebg-preview.png" alt="Classic navy blazer for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Classic Navy Blazer</h3>
+            <p class="price"><strong>$ 3,999</strong> <span>$ 4,999</span></p>
+          </article>
+
+          <article class="product-card">
+            <div class="badge">-15%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/Royal_Blue-removebg-preview.png" alt="Royal blue kids blazer">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Soft Cotton T-Shirt</h3>
+            <p class="price"><strong>$ 2,199</strong> <span>$ 2,599</span></p>
+          </article>
+
+          <article class="product-card">
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd1.png" alt="Baby bloom dress">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Baby Bloom Dress</h3>
+            <p class="price"><strong>$ 1,299</strong></p>
+          </article>
+
+          <article class="product-card">
+            <div class="badge">-10%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd2.png" alt="Evening party dress for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Evening Party Dress</h3>
+            <p class="price"><strong>$ 2,699</strong> <span>$ 2,999</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-section container">
+        <div class="section-header">
+          <h2>New Arrivals</h2>
+          <a href="#">View All</a>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="badge">-12%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/Maroon-removebg-preview.png" alt="Tailored maroon blazer for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Tailored Maroon Blazer</h3>
+            <p class="price"><strong>$ 4,299</strong> <span>$ 4,899</span></p>
+          </article>
+
+          <article class="product-card">
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/black-removebg-preview.png" alt="Minimal everyday top in black">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Minimal Everyday Tee</h3>
+            <p class="price"><strong>$ 1,099</strong></p>
+          </article>
+
+          <article class="product-card">
+            <div class="badge">-18%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd1.png" alt="Mint baby party dress">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Mint Baby Party Dress</h3>
+            <p class="price"><strong>$ 5,499</strong> <span>$ 6,699</span></p>
+          </article>
+
+          <article class="product-card">
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd2.png" alt="Ruby celebration gown for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Ruby Celebration Gown</h3>
+            <p class="price"><strong>$ 2,799</strong></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="catalog-section all-products-section container">
+        <div class="section-header">
+          <h2>All Products</h2>
+          <a href="#">View All</a>
+        </div>
+
+        <div class="product-grid compact">
+          <article class="product-card compact-card">
+            <div class="badge">-20%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/boy_standing_beside_table-removebg-preview.png" alt="Classic navy blazer for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Classic Navy Blazer</h3>
+            <p class="price"><strong>$ 3,999</strong> <span>$ 4,999</span></p>
+          </article>
+
+          <article class="product-card compact-card">
+            <div class="badge">-15%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/boy_standing_on_the_street_park-removebg-preview.png" alt="Soft cotton top for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Soft Cotton T-Shirt</h3>
+            <p class="price"><strong>$ 2,199</strong> <span>$ 2,599</span></p>
+          </article>
+
+          <article class="product-card compact-card">
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd1.png" alt="Baby bloom dress">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Baby Bloom Dress</h3>
+            <p class="price"><strong>$ 1,299</strong></p>
+          </article>
+
+          <article class="product-card compact-card">
+            <div class="badge">-10%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/pd2.png" alt="Evening party dress for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Evening Party Dress</h3>
+            <p class="price"><strong>$ 2,699</strong> <span>$ 2,999</span></p>
+          </article>
+
+          <article class="product-card compact-card">
+            <div class="badge">-12%</div>
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/Maroon-removebg-preview.png" alt="Tailored maroon blazer for kids">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Tailored Maroon Blazer</h3>
+            <p class="price"><strong>$ 4,299</strong> <span>$ 4,899</span></p>
+          </article>
+
+          <article class="product-card compact-card">
+            <button class="fav" type="button" aria-label="Save product">&#9825;</button>
+            <div class="product-media">
+              <img src="Kids/Blazer/black-removebg-preview.png" alt="Minimal everyday top in black">
+            </div>
+            <div class="product-actions">
+              <a href="#">Add to cart</a>
+              <a href="#">Order Now</a>
+            </div>
+            <h3>Minimal Everyday Tee</h3>
+            <p class="price"><strong>$ 1,099</strong></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand brand-logo footer-brand" href="#">
+            <img src="AlishomartLogo.png" alt="AlishoMart">
+          </a>
+          <p class="footer-copy">Your trusted online destination for premium products. Quality, style, and convenience delivered to your doorstep.</p>
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">&#9678;</a>
+            <a href="#" aria-label="TikTok">&#9677;</a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">All Products</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Customer Service</h3>
+          <ul>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Wishlist</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Return & Refund</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Newsletter</h3>
+          <p class="newsletter-copy">Subscribe to get updates and offers!</p>
+          <form class="newsletter" action="#" method="post">
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input id="newsletter-email" type="email" placeholder="Enter your email">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom container">
+        <p>&copy; 2024 AlishoMart. All Rights Reserved.</p>
+        <div class="payments" aria-label="Payment methods">
+          <span>VISA</span>
+          <span>MC</span>
+          <span>AE</span>
+          <span>PP</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
